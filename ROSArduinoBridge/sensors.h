@@ -2,8 +2,8 @@
 
 #ifdef SENSOR_SONAR
 
-#define TRIG_PIN 3
-#define ECHO_PIN 2
+#define TRIG_PIN 4
+#define ECHO_PIN 11
 
 #endif
 
