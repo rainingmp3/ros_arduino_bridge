@@ -60,8 +60,9 @@
    //#define ROBOGAIA
    
    /* Encoders directly attached to Arduino board */
-   #define ARDUINO_ENC_COUNTER
-
+   #define ARDUINO_ENC_COUNTER_IR
+   /* Sonar sensor*/
+   #define SENSOR_SONAR
    /* L298 Motor driver*/
    #define L298_MOTOR_DRIVER
 #endif
@@ -70,7 +71,7 @@
 #undef USE_SERVOS     // Disable use of PWM servos
 
 /* Serial port baud rate */
-#define BAUDRATE     57600
+#define BAUDRATE     31250
 
 /* Maximum PWM signal */
 #define MAX_PWM        255
@@ -183,7 +184,7 @@ int runCommand() {
     Serial.println("OK");
     break;
   case PING:
-    Serial.println(Ping(arg1));
+    Serial.println(Ping());
     break;
 #ifdef USE_SERVOS
   case SERVO_WRITE:
@@ -271,9 +272,17 @@ void setup() {
     
     // enable PCINT1 and PCINT2 interrupt in the general interrupt mask
     PCICR |= (1 << PCIE1) | (1 << PCIE2);
+  #elif defined(ARDUINO_ENC_COUNTER_IR)
+    initIrEncoders();
   #endif
+  
+  #ifdef SENSOR_SONAR
+    initSonar();
+  #endif
+  
   initMotorController();
   resetPID();
+  
 #endif
 
 /* Attach servos if used */

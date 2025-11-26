@@ -56,9 +56,16 @@
     setMotorSpeed(RIGHT, rightSpeed);
   }
 #elif defined L298_MOTOR_DRIVER
+  
+  /* Declaring left and right reverse booleans for wheels
+   direction. In global scope */
+  volatile bool left_reverse = 0;
+  volatile bool right_reverse = 0;
+
   void initMotorController() {
     digitalWrite(RIGHT_MOTOR_ENABLE, HIGH);
     digitalWrite(LEFT_MOTOR_ENABLE, HIGH);
+    Serial.println("hi");
   }
   
   void setMotorSpeed(int i, int spd) {
@@ -72,11 +79,13 @@
     if (spd > 255)
       spd = 255;
     
-    if (i == LEFT) { 
+    if (i == LEFT) {
+      left_reverse = reverse;
       if      (reverse == 0) { analogWrite(LEFT_MOTOR_FORWARD, spd); analogWrite(LEFT_MOTOR_BACKWARD, 0); }
       else if (reverse == 1) { analogWrite(LEFT_MOTOR_BACKWARD, spd); analogWrite(LEFT_MOTOR_FORWARD, 0); }
     }
     else /*if (i == RIGHT) //no need for condition*/ {
+      right_reverse = reverse;
       if      (reverse == 0) { analogWrite(RIGHT_MOTOR_FORWARD, spd); analogWrite(RIGHT_MOTOR_BACKWARD, 0); }
       else if (reverse == 1) { analogWrite(RIGHT_MOTOR_BACKWARD, spd); analogWrite(RIGHT_MOTOR_FORWARD, 0); }
     }

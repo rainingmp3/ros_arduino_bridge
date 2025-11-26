@@ -68,6 +68,59 @@
       return;
     }
   }
+#elif defined(ARDUINO_ENC_COUNTER_IR)
+volatile long left_enc_pos = 0L;
+volatile long right_enc_pos = 0L;
+
+extern volatile bool left_reverse;   
+extern volatile bool right_reverse; 
+//
+void ISR_LEFT() {
+  if (left_reverse) {
+    left_enc_pos--;
+  } else {
+    left_enc_pos++;
+  }
+}
+
+void ISR_RIGHT() {
+
+  if (right_reverse) {
+ 
+    right_enc_pos--;
+  } else {
+    right_enc_pos++;
+  }
+}
+
+// initialize encoders in setup function (ROSArduinoBridge.ino)
+void initIrEncoders(){
+  Serial.println("IR HI");
+  pinMode(LEFT_ENC, INPUT);
+  pinMode(RIGHT_ENC, INPUT);
+
+  attachInterrupt(digitalPinToInterrupt(LEFT_ENC), ISR_LEFT, RISING);
+  attachInterrupt(digitalPinToInterrupt(RIGHT_ENC), ISR_RIGHT, RISING);
+}
+/* Wrap the encoder reading function */
+long readEncoder(int i) {
+  if (i == LEFT){
+    // Serial.println(left_enc_pos);
+    return left_enc_pos;}
+  else
+    return right_enc_pos;
+}
+
+/* Wrap the encoder reset function */
+void resetEncoder(int i) {
+  if (i == LEFT) {
+    left_enc_pos = 0L;
+    return;
+  } else {
+    right_enc_pos = 0L;
+    return;
+  }
+}
 #else
   #error A encoder driver must be selected!
 #endif

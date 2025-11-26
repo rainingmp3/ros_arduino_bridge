@@ -1,5 +1,8 @@
 # Arduino Motor Controller
 
+THIS IS README FROM THE FORK'S SOURCE.
+FOR THE CHANGES CHECK CHANGES.MD
+
 This code turns an Arduino into a motor controller!
 It provides a simple serial interface to communicate with a high-level computer (e.g. running ROS), and generates the appropriate PWM signals for a motor driver, to drive two motors.
 
