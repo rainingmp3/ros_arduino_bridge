@@ -1,7 +1,7 @@
 /* *************************************************************
    Encoder driver function definitions - by James Nugen
    ************************************************************ */
-// Modified by Kotanov Ivane
+// Modified by Ivane Kotanov
 // Changes: added definition for IR wheel encoders
 
 #ifdef ARDUINO_ENC_COUNTER

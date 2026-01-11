@@ -20,7 +20,7 @@ float microsecondsToCm(long microseconds) {
 }
 
 long Ping() {
-  Serial.println("sonar hi");
+  // Serial.println("sonar hi");
   long duration, range;
   // The PING))) is triggered by a HIGH pulse of 2 or more microseconds.
   // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:

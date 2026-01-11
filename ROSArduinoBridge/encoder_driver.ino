@@ -95,7 +95,7 @@ void ISR_RIGHT() {
 
 // initialize encoders in setup function (ROSArduinoBridge.ino)
 void initIrEncoders(){
-  Serial.println("IR HI");
+  // Serial.println("IR HI");
   pinMode(LEFT_ENC, INPUT);
   pinMode(RIGHT_ENC, INPUT);
 

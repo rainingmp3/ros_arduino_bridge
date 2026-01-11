@@ -65,7 +65,7 @@
   void initMotorController() {
     digitalWrite(RIGHT_MOTOR_ENABLE, HIGH);
     digitalWrite(LEFT_MOTOR_ENABLE, HIGH);
-    Serial.println("hi");
+    // Serial.println("hi");
   }
   
   void setMotorSpeed(int i, int spd) {
