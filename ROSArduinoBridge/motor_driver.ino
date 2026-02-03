@@ -68,7 +68,7 @@
     // Serial.println("hi");
   }
   
-  void setMotorSpeed(int i, int spd) {
+  void setMotorSpeed(float i, float spd) {
     unsigned char reverse = 0;
   
     if (spd < 0)
@@ -91,9 +91,10 @@
     }
   }
   
-  void setMotorSpeeds(int leftSpeed, int rightSpeed) {
+  void setMotorSpeeds(float leftSpeed, float rightSpeed) {
     setMotorSpeed(LEFT, leftSpeed);
     setMotorSpeed(RIGHT, rightSpeed);
+    Serial.println("lp: " + String(leftSpeed) + ", rp: " + String(rightSpeed));
   }
 #else
   #error A motor driver must be selected!

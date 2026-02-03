@@ -15,5 +15,5 @@ extern volatile bool right_reverse;
 #endif
 
 void initMotorController();
-void setMotorSpeed(int i, int spd);
-void setMotorSpeeds(int leftSpeed, int rightSpeed);
+void setMotorSpeed(float i, float spd);
+void setMotorSpeeds(float leftSpeed, float rightSpeed);

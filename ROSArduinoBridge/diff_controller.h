@@ -8,8 +8,8 @@
 /* PID setpoint info For a Motor */
 typedef struct {
   double TargetTicksPerFrame; // target speed in ticks per frame
-  long Encoder;               // encoder count
-  long PrevEnc;               // last encoder count
+  float Encoder;              // encoder count
+  float PrevEnc;              // last encoder count
 
   /*
    * Using previous input (PrevInput) instead of PrevError to avoid derivative
@@ -37,7 +37,7 @@ SetPointInfo leftPID, rightPID;
 int Kp = 20;
 int Kd = 12;
 int Ki = 0;
-int Ko = 50;
+int Ko = 1;
 
 unsigned char moving = 0; // is the base in motion?
 
@@ -113,19 +113,18 @@ void updatePID() {
   rightPID.Encoder = readEncoder(RIGHT);
 
   /* If we're not moving there is nothing more to do */
-  if (!moving) {
-    /*
-     * Reset PIDs once, to prevent startup spikes,
-     * see
-     * http://brettbeauregard.com/blog/2011/04/improving-the-beginner%E2%80%99s-pid-initialization/
-     * PrevInput is considered a good proxy to detect
-     * whether reset has already happened
-     */
-    if (leftPID.PrevInput != 0 || rightPID.PrevInput != 0)
-      resetPID();
-    return;
-  }
-
+  // if (!moving) {
+  //   /*
+  //    * Reset PIDs once, to prevent startup spikes,
+  //    * see
+  //    * http://brettbeauregard.com/blog/2011/04/improving-the-beginner%E2%80%99s-pid-initialization/
+  //    * PrevInput is considered a good proxy to detect
+  //    * whether reset has already happened
+  //    */
+  //   if (leftPID.PrevInput != 0 || rightPID.PrevInput != 0)
+  //     resetPID();
+  //   return;
+  // }
   /* Compute PID update for each motor */
   doPID(&rightPID);
   doPID(&leftPID);
