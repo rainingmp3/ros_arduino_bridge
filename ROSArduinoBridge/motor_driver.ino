@@ -94,7 +94,6 @@
   void setMotorSpeeds(float leftSpeed, float rightSpeed) {
     setMotorSpeed(LEFT, leftSpeed);
     setMotorSpeed(RIGHT, rightSpeed);
-    Serial.println("lp: " + String(leftSpeed) + ", rp: " + String(rightSpeed));
   }
 #else
   #error A motor driver must be selected!
