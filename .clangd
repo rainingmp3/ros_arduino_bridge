@@ -1,0 +1,23 @@
+CompileFlags:
+  Add:
+    - "-DUSE_BASE"
+    - "-DARDUINO_ENC_COUNTER_IR"
+    - "-DSENSOR_SONAR"
+    - "-DL298_MOTOR_DRIVER"
+    - "-DUSE_IMU"
+    - "-DOUTPUT_READABLE_ACCELGYRO"
+    - "-isystem/home/ingenuity/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/avr/include"
+    - "-isystem/home/ingenuity/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include"
+    - "-isystem/home/ingenuity/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/include"
+    - "-isystem/home/ingenuity/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino"
+    - "-isystem/home/ingenuity/.arduino15/packages/arduino/hardware/avr/1.8.7/variants/eightanaloginputs"
+    - "-isystem/home/ingenuity/Arduino/libraries/meow/ros_arduino_bridge"
+    - "-isystem/home/ingenuity/Arduino/libraries"
+    - "-include/home/ingenuity/Arduino/libraries/meow/ros_arduino_bridge/ROSArduinoBridge/ROSArduinoBridge.ino"
+    - "-x"
+    - "c++"
+Diagnostics:
+  UnusedIncludes: None
+  Suppress:
+    - "pp_file_not_found"
+    - "undeclared_var_use"
