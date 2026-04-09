@@ -51,7 +51,7 @@ float euler[3];      // [psi, theta, phi]    Euler angle container
 float
     ypr[3]; // [yaw, pitch, roll]   Yaw/Pitch/Roll container and gravity vector
 
-void setup() {
+void initImu() {
 #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
     Wire.begin();
     Wire.setClock(400000); // 400kHz I2C clock. Comment on this line if having
@@ -105,7 +105,7 @@ void setup() {
     }
 }
 
-void loop() {
+void runImu() {
     if (!DMPReady)
         return;
 

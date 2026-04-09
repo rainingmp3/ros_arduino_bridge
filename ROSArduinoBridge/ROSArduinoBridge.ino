@@ -205,7 +205,7 @@ int runCommand() {
         Serial.println(readEncoder(RIGHT));
         break;
     case READ_IMU:
-        runIMU();
+        runImu();
         break;
     case RESET_ENCODERS:
         resetEncoders();
@@ -286,7 +286,7 @@ void setup() {
 #endif
 
 #ifdef SENSOR_SONAR
-    initIMU();
+    initImu();
 #endif
 
     initMotorController();
